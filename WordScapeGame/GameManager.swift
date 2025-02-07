@@ -22,10 +22,6 @@ final class GameManager {
     private var displayLink: CADisplayLink?
     private var lastFrameTime: CFTimeInterval = 0
     
-    var onWordCaptured: ((String) -> Void)?
-    var onWordRemoved: ((WordBoxView) -> Void)?
-    var onNextWordStart: ((WordBoxViewModel) -> Void)?
-    
     init(){}
     
     /// Starts the game loop and word movement.

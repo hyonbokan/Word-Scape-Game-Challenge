@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9E0812BE2D54ADF900C3558B /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0812BD2D54ADF900C3558B /* WordModel.swift */; };
+		BD008A9E2D52FE700059596C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008A9D2D52FE700059596C /* AppDelegate.swift */; };
+		BD008AA02D52FE700059596C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008A9F2D52FE700059596C /* SceneDelegate.swift */; };
+		BD008AA22D52FE700059596C /* MainViewConteroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008AA12D52FE700059596C /* MainViewConteroller.swift */; };
+		BD008AA72D52FE710059596C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD008AA62D52FE710059596C /* Assets.xcassets */; };
+		BD008AAA2D52FE710059596C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = BD008AA92D52FE710059596C /* Base */; };
+		BD008AB72D5300740059596C /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008AB62D5300740059596C /* GameButton.swift */; };
+		BD008AB92D5300C00059596C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008AB82D5300C00059596C /* Extensions.swift */; };
+		BD008B0E2D54685E0059596C /* WordBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008B0D2D54685E0059596C /* WordBoxView.swift */; };
+		BD008B112D546A020059596C /* WordBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008B102D546A020059596C /* WordBoxViewModel.swift */; };
+		BD828D102D55BEAE007C32A3 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD828D0F2D55BEAE007C32A3 /* GameManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9E0812BD2D54ADF900C3558B /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
+		BD008A9A2D52FE700059596C /* WordScapeGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScapeGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD008A9D2D52FE700059596C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BD008A9F2D52FE700059596C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BD008AA12D52FE700059596C /* MainViewConteroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewConteroller.swift; sourceTree = "<group>"; };
+		BD008AA62D52FE710059596C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BD008AA92D52FE710059596C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BD008AAB2D52FE710059596C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD008AB62D5300740059596C /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
+		BD008AB82D5300C00059596C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BD008B0D2D54685E0059596C /* WordBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBoxView.swift; sourceTree = "<group>"; };
+		BD008B102D546A020059596C /* WordBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBoxViewModel.swift; sourceTree = "<group>"; };
+		BD828D0F2D55BEAE007C32A3 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD008A972D52FE700059596C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD008A912D52FE700059596C = {
+			isa = PBXGroup;
+			children = (
+				BD008A9C2D52FE700059596C /* WordScapeGame */,
+				BD008A9B2D52FE700059596C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD008A9B2D52FE700059596C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD008A9A2D52FE700059596C /* WordScapeGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD008A9C2D52FE700059596C /* WordScapeGame */ = {
+			isa = PBXGroup;
+			children = (
+				BD008AB22D52FF360059596C /* Models */,
+				BD008B0F2D5469C70059596C /* ViewModels */,
+				BD008AB32D52FF3F0059596C /* Views */,
+				BD008AB42D52FF430059596C /* Controllers */,
+				BD008AB12D52FF2A0059596C /* Resources */,
+				BD008AAB2D52FE710059596C /* Info.plist */,
+				BD828D0F2D55BEAE007C32A3 /* GameManager.swift */,
+			);
+			path = WordScapeGame;
+			sourceTree = "<group>";
+		};
+		BD008AB12D52FF2A0059596C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BD008A9D2D52FE700059596C /* AppDelegate.swift */,
+				BD008A9F2D52FE700059596C /* SceneDelegate.swift */,
+				BD008AA62D52FE710059596C /* Assets.xcassets */,
+				BD008AA82D52FE710059596C /* LaunchScreen.storyboard */,
+				BD008AB82D5300C00059596C /* Extensions.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BD008AB22D52FF360059596C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9E0812BD2D54ADF900C3558B /* WordModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BD008AB32D52FF3F0059596C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD008AB52D5300410059596C /* CustomElements */,
+				BD008B0D2D54685E0059596C /* WordBoxView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BD008AB42D52FF430059596C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BD008AA12D52FE700059596C /* MainViewConteroller.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BD008AB52D5300410059596C /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				BD008AB62D5300740059596C /* GameButton.swift */,
+			);
+			path = CustomElements;
+			sourceTree = "<group>";
+		};
+		BD008B0F2D5469C70059596C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BD008B102D546A020059596C /* WordBoxViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD008A992D52FE700059596C /* WordScapeGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD008AAE2D52FE710059596C /* Build configuration list for PBXNativeTarget "WordScapeGame" */;
+			buildPhases = (
+				BD008A962D52FE700059596C /* Sources */,
+				BD008A972D52FE700059596C /* Frameworks */,
+				BD008A982D52FE700059596C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WordScapeGame;
+			productName = WordScapeGame;
+			productReference = BD008A9A2D52FE700059596C /* WordScapeGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD008A922D52FE700059596C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					BD008A992D52FE700059596C = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = BD008A952D52FE700059596C /* Build configuration list for PBXProject "WordScapeGame" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BD008A912D52FE700059596C;
+			productRefGroup = BD008A9B2D52FE700059596C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD008A992D52FE700059596C /* WordScapeGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD008A982D52FE700059596C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD008AA72D52FE710059596C /* Assets.xcassets in Resources */,
+				BD008AAA2D52FE710059596C /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD008A962D52FE700059596C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD008B0E2D54685E0059596C /* WordBoxView.swift in Sources */,
+				BD828D102D55BEAE007C32A3 /* GameManager.swift in Sources */,
+				BD008AB92D5300C00059596C /* Extensions.swift in Sources */,
+				BD008AA22D52FE700059596C /* MainViewConteroller.swift in Sources */,
+				BD008AB72D5300740059596C /* GameButton.swift in Sources */,
+				BD008B112D546A020059596C /* WordBoxViewModel.swift in Sources */,
+				BD008A9E2D52FE700059596C /* AppDelegate.swift in Sources */,
+				BD008AA02D52FE700059596C /* SceneDelegate.swift in Sources */,
+				9E0812BE2D54ADF900C3558B /* WordModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BD008AA82D52FE710059596C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD008AA92D52FE710059596C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BD008AAC2D52FE710059596C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BD008AAD2D52FE710059596C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BD008AAF2D52FE710059596C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KFKP37Q73C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WordScapeGame/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hyonbokan.WordScapeGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BD008AB02D52FE710059596C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KFKP37Q73C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WordScapeGame/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hyonbokan.WordScapeGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD008A952D52FE700059596C /* Build configuration list for PBXProject "WordScapeGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD008AAC2D52FE710059596C /* Debug */,
+				BD008AAD2D52FE710059596C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD008AAE2D52FE710059596C /* Build configuration list for PBXNativeTarget "WordScapeGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD008AAF2D52FE710059596C /* Debug */,
+				BD008AB02D52FE710059596C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD008A922D52FE700059596C /* Project object */;
+}

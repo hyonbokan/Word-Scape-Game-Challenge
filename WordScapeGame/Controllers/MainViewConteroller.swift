@@ -48,9 +48,9 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+        gameManager.delegate = self
         addSubviews()
         configureButtons()
-        addBindings()
         setupGame()
     }
     
@@ -120,15 +120,6 @@ final class MainViewController: UIViewController {
         setupGame()
     }
     
-    private func addBindings() {
-        gameManager.onWordCaptured = { [weak self] word in
-            self?.updateCapturedWord()
-        }
-        
-        gameManager.onWordRemoved = { wordBoxView in
-            wordBoxView.removeFromSuperview()
-        }
-    }
     
     private func setupGame() {
         let lanes = [
@@ -139,8 +130,14 @@ final class MainViewController: UIViewController {
         ]
         gameManager.setupLanes(lanes: lanes, gameAreaView: gameAreaView)
     }
+}
+
+extension MainViewController: GameManagerDelegate {
+    func wordDidCapture(_ word: String) {
+        capturedLabel.text?.append("\(word)  ")
+    }
     
-    private func updateCapturedWord() {
-        capturedLabel.text = "Captured Words:\n" + gameManager.capturedWords.joined(separator: "  ")
+    func wordDidRemove(_ wordBoxView: WordBoxView) {
+        wordBoxView.removeFromSuperview()
     }
 }

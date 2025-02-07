@@ -29,7 +29,6 @@ final class WordBoxViewModel {
     }
     var xPosition: CGFloat
     var onUpdate: (() -> Void)? // notify the view to update color
-    var onCapture: ((String) -> Void)? // notify main VC when captured
     
     var word: String { model.text }
     var speed: CGFloat { model.speed }
@@ -59,6 +58,5 @@ final class WordBoxViewModel {
     func capture() {
         guard state == .moving else { return }
         state = .captured
-        onCapture?(word)
     }
 }

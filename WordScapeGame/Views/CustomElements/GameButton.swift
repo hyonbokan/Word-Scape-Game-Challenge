@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Custom UIButton for reusability
 final class GameButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)

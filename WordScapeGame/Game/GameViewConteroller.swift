@@ -8,7 +8,7 @@
 import UIKit
 
 /// The main VC that manages the game UI
-final class MainViewController: UIViewController {
+final class GameViewController: UIViewController {
     
     private let gameManager = GameManager()
     
@@ -49,68 +49,57 @@ final class MainViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         gameManager.delegate = self
-        addSubviews()
-        configureButtons()
+        setupUI()
+        setupConstraints()
         setupGame()
     }
     
-    private func addSubviews() {
+    private func setupUI() {
         view.addSubview(gameAreaView)
         view.addSubview(capturedLabel)
         view.addSubview(startButton)
         view.addSubview(resetButton)
-    }
-    
-    private func configureButtons() {
+        
         startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
         resetButton.addTarget(self, action: #selector(didTapResetButton), for: .touchUpInside)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    private func setupConstraints() {
+        [gameAreaView, capturedLabel, startButton, resetButton].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
         
-        let padding: CGFloat = 20
-        let topInset = view.safeAreaInsets.top
-        let viewWidth = view.bounds.width
-        let viewHeight = view.bounds.height
-        let gameAreaHeight = viewHeight * 0.6
-        
-        gameAreaView.frame = CGRect(
-            x: padding,
-            y: topInset + padding,
-            width: viewWidth - padding * 2,
-            height: gameAreaHeight
-         )
-
-         capturedLabel.frame = CGRect(
-            x: padding,
-            y: gameAreaView.frame.maxY + padding,
-            width: viewWidth - padding * 2,
-            height: 80
-        )
-
-        let buttonWidth: CGFloat = 100
-        let buttonHeight: CGFloat = 40
-        let totalButtonWidth = buttonWidth * 2 + padding
-        let buttonX = (viewWidth - totalButtonWidth) / 2
-        
-        startButton.frame = CGRect(
-             x: buttonX,
-             y: capturedLabel.bottom + padding,
-             width: buttonWidth,
-             height: buttonHeight
-        )
-        resetButton.frame = CGRect(
-            x: startButton.right + padding,
-            y: capturedLabel.bottom + padding,
-            width: buttonWidth,
-            height: buttonHeight
-        )
+        NSLayoutConstraint.activate([
+            // GameArea
+            gameAreaView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            gameAreaView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            gameAreaView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            gameAreaView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6),
+            
+            // capturedLabel
+            capturedLabel.topAnchor.constraint(equalTo: gameAreaView.bottomAnchor, constant: 20),
+            capturedLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            capturedLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            capturedLabel.heightAnchor.constraint(equalToConstant: 80),
+            
+            // startButton
+            startButton.topAnchor.constraint(equalTo: capturedLabel.bottomAnchor, constant: 20),
+            startButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50),
+            startButton.widthAnchor.constraint(equalToConstant: 100),
+            startButton.heightAnchor.constraint(equalToConstant: 44),
+            
+            // resetButton
+            resetButton.topAnchor.constraint(equalTo: capturedLabel.bottomAnchor, constant: 20),
+            resetButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            resetButton.widthAnchor.constraint(equalToConstant: 100),
+            resetButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
     }
 
     // MARK: Button actions
     @objc private func didTapStartButton() {
         gameManager.startGame()
+        startButton.isEnabled = false
     }
     
     @objc private func didTapResetButton() {
@@ -118,8 +107,8 @@ final class MainViewController: UIViewController {
         capturedLabel.text = "Captured Words:\n"
         gameAreaView.subviews.forEach { $0.removeFromSuperview() }
         setupGame()
+        startButton.isEnabled = true
     }
-    
     
     private func setupGame() {
         let lanes = [
@@ -132,7 +121,8 @@ final class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: GameManagerDelegate {
+// MARK: GameManagerDelegate
+extension GameViewController: GameManagerDelegate {
     func wordDidCapture(_ word: String) {
         capturedLabel.text?.append("\(word)  ")
     }

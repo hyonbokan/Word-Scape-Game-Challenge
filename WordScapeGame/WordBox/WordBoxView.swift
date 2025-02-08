@@ -9,8 +9,6 @@ import UIKit
 
 /// UILabel for a single moving word box
 final class WordBoxView: UILabel {
-    // MARK: Properties
-    
     /// Called when the word is tapped
     var onTap: (() -> Void)?
     
@@ -28,9 +26,11 @@ final class WordBoxView: UILabel {
         self.clipsToBounds = true
         
         self.isUserInteractionEnabled = true
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapSelf))
         self.addGestureRecognizer(tapGesture)
         
+        self.translatesAutoresizingMaskIntoConstraints = false
         updateState(state: viewModel.state)
     }
     
@@ -49,13 +49,13 @@ final class WordBoxView: UILabel {
     func updateState(state: WordState) {
         switch state {
         case .set:
-            self.backgroundColor = .orange
+            self.backgroundColor = .systemOrange
         case .moving:
-            self.backgroundColor = .green
+            self.backgroundColor = .systemGreen
         case .finished:
-            self.backgroundColor = .blue
+            self.backgroundColor = .systemBlue
         case .captured:
-            self.backgroundColor = .purple
+            self.backgroundColor = .systemRed
         }
     }
 }

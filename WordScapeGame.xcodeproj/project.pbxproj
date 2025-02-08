@@ -10,7 +10,7 @@
 		9E0812BE2D54ADF900C3558B /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0812BD2D54ADF900C3558B /* WordModel.swift */; };
 		BD008A9E2D52FE700059596C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008A9D2D52FE700059596C /* AppDelegate.swift */; };
 		BD008AA02D52FE700059596C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008A9F2D52FE700059596C /* SceneDelegate.swift */; };
-		BD008AA22D52FE700059596C /* MainViewConteroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008AA12D52FE700059596C /* MainViewConteroller.swift */; };
+		BD008AA22D52FE700059596C /* GameViewConteroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008AA12D52FE700059596C /* GameViewConteroller.swift */; };
 		BD008AA72D52FE710059596C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD008AA62D52FE710059596C /* Assets.xcassets */; };
 		BD008AAA2D52FE710059596C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = BD008AA92D52FE710059596C /* Base */; };
 		BD008AB72D5300740059596C /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD008AB62D5300740059596C /* GameButton.swift */; };
@@ -25,7 +25,7 @@
 		BD008A9A2D52FE700059596C /* WordScapeGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScapeGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD008A9D2D52FE700059596C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD008A9F2D52FE700059596C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BD008AA12D52FE700059596C /* MainViewConteroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewConteroller.swift; sourceTree = "<group>"; };
+		BD008AA12D52FE700059596C /* GameViewConteroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewConteroller.swift; sourceTree = "<group>"; };
 		BD008AA62D52FE710059596C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD008AA92D52FE710059596C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD008AAB2D52FE710059596C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,13 +66,13 @@
 		BD008A9C2D52FE700059596C /* WordScapeGame */ = {
 			isa = PBXGroup;
 			children = (
-				BD008AB22D52FF360059596C /* Models */,
-				BD008B0F2D5469C70059596C /* ViewModels */,
-				BD008AB32D52FF3F0059596C /* Views */,
-				BD008AB42D52FF430059596C /* Controllers */,
+				FFDD016A2D56405D00E04804 /* AppState */,
+				FFDD016C2D5640EB00E04804 /* WordBox */,
+				BD008AB42D52FF430059596C /* Game */,
+				BD008AB32D52FF3F0059596C /* UI */,
+				FFDD016B2D5640BB00E04804 /* Common */,
 				BD008AB12D52FF2A0059596C /* Resources */,
 				BD008AAB2D52FE710059596C /* Info.plist */,
-				BD828D0F2D55BEAE007C32A3 /* GameManager.swift */,
 			);
 			path = WordScapeGame;
 			sourceTree = "<group>";
@@ -80,54 +80,62 @@
 		BD008AB12D52FF2A0059596C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BD008A9D2D52FE700059596C /* AppDelegate.swift */,
-				BD008A9F2D52FE700059596C /* SceneDelegate.swift */,
 				BD008AA62D52FE710059596C /* Assets.xcassets */,
 				BD008AA82D52FE710059596C /* LaunchScreen.storyboard */,
-				BD008AB82D5300C00059596C /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		BD008AB22D52FF360059596C /* Models */ = {
+		BD008AB32D52FF3F0059596C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				9E0812BD2D54ADF900C3558B /* WordModel.swift */,
+				BD008AB52D5300410059596C /* Buttons */,
 			);
-			path = Models;
+			path = UI;
 			sourceTree = "<group>";
 		};
-		BD008AB32D52FF3F0059596C /* Views */ = {
+		BD008AB42D52FF430059596C /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				BD008AB52D5300410059596C /* CustomElements */,
-				BD008B0D2D54685E0059596C /* WordBoxView.swift */,
+				BD828D0F2D55BEAE007C32A3 /* GameManager.swift */,
+				BD008AA12D52FE700059596C /* GameViewConteroller.swift */,
 			);
-			path = Views;
+			path = Game;
 			sourceTree = "<group>";
 		};
-		BD008AB42D52FF430059596C /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				BD008AA12D52FE700059596C /* MainViewConteroller.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		BD008AB52D5300410059596C /* CustomElements */ = {
+		BD008AB52D5300410059596C /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
 				BD008AB62D5300740059596C /* GameButton.swift */,
 			);
-			path = CustomElements;
+			path = Buttons;
 			sourceTree = "<group>";
 		};
-		BD008B0F2D5469C70059596C /* ViewModels */ = {
+		FFDD016A2D56405D00E04804 /* AppState */ = {
 			isa = PBXGroup;
 			children = (
-				BD008B102D546A020059596C /* WordBoxViewModel.swift */,
+				BD008A9D2D52FE700059596C /* AppDelegate.swift */,
+				BD008A9F2D52FE700059596C /* SceneDelegate.swift */,
 			);
-			path = ViewModels;
+			path = AppState;
+			sourceTree = "<group>";
+		};
+		FFDD016B2D5640BB00E04804 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BD008AB82D5300C00059596C /* Extensions.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FFDD016C2D5640EB00E04804 /* WordBox */ = {
+			isa = PBXGroup;
+			children = (
+				9E0812BD2D54ADF900C3558B /* WordModel.swift */,
+				BD008B102D546A020059596C /* WordBoxViewModel.swift */,
+				BD008B0D2D54685E0059596C /* WordBoxView.swift */,
+			);
+			path = WordBox;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,7 +211,7 @@
 				BD008B0E2D54685E0059596C /* WordBoxView.swift in Sources */,
 				BD828D102D55BEAE007C32A3 /* GameManager.swift in Sources */,
 				BD008AB92D5300C00059596C /* Extensions.swift in Sources */,
-				BD008AA22D52FE700059596C /* MainViewConteroller.swift in Sources */,
+				BD008AA22D52FE700059596C /* GameViewConteroller.swift in Sources */,
 				BD008AB72D5300740059596C /* GameButton.swift in Sources */,
 				BD008B112D546A020059596C /* WordBoxViewModel.swift in Sources */,
 				BD008A9E2D52FE700059596C /* AppDelegate.swift in Sources */,
@@ -357,8 +365,8 @@
 				INFOPLIST_FILE = WordScapeGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -384,8 +392,8 @@
 				INFOPLIST_FILE = WordScapeGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

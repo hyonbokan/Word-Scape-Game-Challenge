@@ -9,5 +9,5 @@ import Foundation
 
 struct WordModel {
     let text: String
-    let speed: CGFloat
+    let speedPercentage: CGFloat = CGFloat.random(in: 0.3...0.8)
 }

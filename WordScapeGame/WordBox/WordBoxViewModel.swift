@@ -24,14 +24,20 @@ final class WordBoxViewModel {
     private let model: WordModel
     var state: WordState {
         didSet {
-            onUpdate?() // notify the view of the state changes
+            onUpdateState?(state) // notify the view of the state changes
         }
     }
-    var xPosition: CGFloat
-    var onUpdate: (() -> Void)? // notify the view to update color
+    var xPosition: CGFloat {
+        didSet {
+            onUpdatePosition?(xPosition)
+        }
+    }
+    
+    var onUpdatePosition: ((CGFloat) -> Void)? // notify the position changes
+    var onUpdateState: ((WordState) -> Void)? // notify the state changes
     
     var word: String { model.text }
-    var speed: CGFloat { model.speed }
+    var speedPercentage: CGFloat { model.speedPercentage }
     
     // MARK: init
     init(model: WordModel) {
@@ -45,13 +51,15 @@ final class WordBoxViewModel {
     /// moves the word on the x axis
     func move(deltaTime: CGFloat, finishLine: CGFloat) {
         guard state == .moving else { return }
-        xPosition += speed * deltaTime
+        
+        let screenWidth = UIScreen.main.bounds.width
+        let dynamicSpeed = speedPercentage * screenWidth
+        
+        xPosition += dynamicSpeed * deltaTime
         if xPosition >= finishLine {
             xPosition = finishLine
             state = .finished
         }
-        
-        onUpdate?() // trigger ui update
     }
     
     /// captures the word when tapped

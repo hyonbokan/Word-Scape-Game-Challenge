@@ -20,7 +20,10 @@ final class GameManager {
     
     private var laneViewModels: [[WordBoxViewModel]] = []
     private var displayLink: CADisplayLink?
-    private var lastFrameTime: CFTimeInterval = 0
+    private var lastFrame: CFTimeInterval = 0
+    
+    private weak var gameAreaView: UIView?
+    private var previousGameAreaWidth: CGFloat?
     
     init(){}
     
@@ -28,11 +31,13 @@ final class GameManager {
     func startGame() {
         // check if there are any words left
         let wordsToMove = laneViewModels.flatMap { $0 }.contains { $0.state == .set }
+        
         guard wordsToMove else { return }
         
+        
         if displayLink == nil {
-            lastFrameTime = CACurrentMediaTime()
-            displayLink = CADisplayLink(target: self, selector: #selector(gameLoop))
+            lastFrame = CACurrentMediaTime()
+            displayLink = CADisplayLink(target: self, selector: #selector(gameLoop(displayLink:)))
             displayLink?.add(to: .main, forMode: .common)
         }
         for lane in laneViewModels {
@@ -50,20 +55,21 @@ final class GameManager {
     }
     
     // MARK: Game loop
-    /// Updates the word position.
-    @objc private func gameLoop() {
-        guard let displayLink = displayLink else { return }
-
+    @objc private func gameLoop(displayLink: CADisplayLink) {
         let currentTime = displayLink.timestamp
-        let deltaTime = CGFloat(currentTime - lastFrameTime)
-        lastFrameTime = currentTime
-
-        let finishLine = UIScreen.main.bounds.width - 120 // needs to be dynamic
+        let deltaTime = CGFloat(currentTime - lastFrame)
+        lastFrame = currentTime
+        
+        guard let gameAreaView = gameAreaView else { return }
+        
+        let gameAreaWidth = gameAreaView.width
+        let wordBoxWidth: CGFloat = 80
+        let finishLine = gameAreaWidth - wordBoxWidth
         
         var hasActiveWords = false
 
-        for words in laneViewModels {
-            if let activeWord = words.first(where: { $0.state == .moving }) {
+        for lane in laneViewModels {
+            if let activeWord = lane.first(where: { $0.state == .moving }) {
                 activeWord.move(deltaTime: deltaTime, finishLine: finishLine)
                 hasActiveWords = true
             }
@@ -80,54 +86,62 @@ final class GameManager {
     
     /// Sets up lanes with words and linking VMs to UI Views
     func setupLanes(lanes: [[String]], gameAreaView: UIView) {
+        self.gameAreaView = gameAreaView
         
         let wordHeight: CGFloat = 20
         let lanePadding: CGFloat = 20
         var yOffset: CGFloat = 10
         
         
-        for lane in lanes {
+        for (laneIndex, lane) in lanes.enumerated() {
             var laneViewModel: [WordBoxViewModel] = []
             
             for (index, word) in lane.enumerated() {
-                let wordModel = WordModel(text: word, speed: CGFloat.random(in: 100...300))
+                let wordModel = WordModel(text: word)
                 let wordBoxViewModel = WordBoxViewModel(model: wordModel)
                 let wordBoxView = WordBoxView(viewModel: wordBoxViewModel)
                 
-                let wordY = yOffset + CGFloat(index) * (wordHeight + 5)
-                wordBoxView.frame.origin = CGPoint(x: 0, y: wordY)
+                gameAreaView.addSubview(wordBoxView)
                 
-                // handle capture tap-capture action
+                let leadingConstraint = wordBoxView.leadingAnchor.constraint(equalTo: gameAreaView.leadingAnchor, constant: 0)
+                
+                NSLayoutConstraint.activate([
+                    wordBoxView.topAnchor.constraint(equalTo: gameAreaView.topAnchor, constant: yOffset + CGFloat(index) * (wordHeight + 5)),
+                    leadingConstraint,
+                    wordBoxView.widthAnchor.constraint(equalToConstant: 80),
+                    wordBoxView.heightAnchor.constraint(equalToConstant: wordHeight)
+                ])
+                
+                // handle tap-to-capture action
                 wordBoxView.onTap = {
                     wordBoxViewModel.capture()
                 }
                 
-                // link VM updates to UI
-                wordBoxViewModel.onUpdate = { [weak self, weak wordBoxView, weak wordBoxViewModel] in
-                    guard let self = self, let wordBoxView = wordBoxView, let wordBoxViewModel = wordBoxViewModel else { return }
+                // update xPosition changes
+                wordBoxViewModel.onUpdatePosition = { newXPosition in
+                    leadingConstraint.constant = newXPosition
+                }
+                
+                // handle state changes
+                wordBoxViewModel.onUpdateState = { [weak self] newState in
+                    guard let self = self else { return }
+                    
+                    wordBoxView.updateState(state: newState)
 
-                    // Update word position and color
-                    wordBoxView.frame.origin.x = wordBoxViewModel.xPosition
-                    wordBoxView.updateState(state: wordBoxViewModel.state)
-
-                    switch wordBoxViewModel.state {
+                    switch newState {
                     case .captured:
                         self.delegate?.wordDidCapture(wordBoxViewModel.word)
                         self.delegate?.wordDidRemove(wordBoxView)
-                        if let lane = self.laneViewModels.first(where: { $0.contains(where: { $0 === wordBoxViewModel }) }) {
-                            self.startNextWord(in: lane, after: wordBoxViewModel)
-                        }
+                        self.startNextWord(in: laneIndex, after: wordBoxViewModel)
 
                     case .finished:
-                        if let lane = self.laneViewModels.first(where: { $0.contains(where: { $0 === wordBoxViewModel }) }) {
-                            self.startNextWord(in: lane, after: wordBoxViewModel)
-                        }
+                        self.startNextWord(in: laneIndex, after: wordBoxViewModel)
 
                     default:
                         break
                     }
                 }
-                gameAreaView.addSubview(wordBoxView)
+                
                 laneViewModel.append(wordBoxViewModel)
             }
             laneViewModels.append(laneViewModel)
@@ -136,7 +150,10 @@ final class GameManager {
     }
     
     /// Starts the next words in the lane after the current words is captured.
-    private func startNextWord(in lane: [WordBoxViewModel], after current: WordBoxViewModel) {
+    private func startNextWord(in laneIndex: Int, after current: WordBoxViewModel) {
+        guard laneIndex < laneViewModels.count else { return }
+        
+        let lane = laneViewModels[laneIndex]
         guard let index = lane.firstIndex(where: { $0 === current }), index + 1 < lane.count else { return }
         lane[index + 1].state = .moving
     }

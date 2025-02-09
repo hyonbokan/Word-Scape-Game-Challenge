@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol GameManagerDelegate: AnyObject {
     func wordDidCapture(_ word: String)
@@ -24,6 +25,8 @@ final class GameManager {
     
     private weak var gameAreaView: UIView?
     private var previousGameAreaWidth: CGFloat?
+    
+    private let speechSynthesizer = AVSpeechSynthesizer()
     
     init(){}
     
@@ -135,6 +138,7 @@ final class GameManager {
                         self.startNextWord(in: laneIndex, after: wordBoxViewModel)
 
                     case .finished:
+                        self.speak(wordBoxViewModel.word)
                         self.startNextWord(in: laneIndex, after: wordBoxViewModel)
 
                     default:
@@ -157,4 +161,23 @@ final class GameManager {
         guard let index = lane.firstIndex(where: { $0 === current }), index + 1 < lane.count else { return }
         lane[index + 1].state = .moving
     }
+    
+    private func speak(_ word: String) {
+        let utterance = AVSpeechUtterance(string: word)
+        utterance.rate = 0.6
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.volume = 1.0
+        
+        DispatchQueue.main.async {
+            self.speechSynthesizer.speak(utterance)
+        }
+    }
+    
+    func warmUpTTS() {
+        let emptyUtterance = AVSpeechUtterance(string: " ")
+        emptyUtterance.rate = 0.6
+
+        speechSynthesizer.speak(emptyUtterance)
+    }
+
 }

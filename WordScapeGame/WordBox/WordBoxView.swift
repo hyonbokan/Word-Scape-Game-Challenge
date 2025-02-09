@@ -17,7 +17,7 @@ final class WordBoxView: UILabel {
     init(viewModel: WordBoxViewModel) {
         super.init(frame: .zero)
         
-        self.frame.size = CGSize(width: 80, height: 20) // could be dynamic
+        self.frame.size = CGSize(width: 80, height: 25) // could be dynamic
         self.text = viewModel.word
         self.textAlignment = .center
         self.font = UIFont.systemFont(ofSize: 14, weight: .semibold)

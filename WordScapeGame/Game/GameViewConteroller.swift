@@ -52,6 +52,7 @@ final class GameViewController: UIViewController {
         setupUI()
         setupConstraints()
         setupGame()
+        gameManager.warmUpTTS()
     }
     
     private func setupUI() {

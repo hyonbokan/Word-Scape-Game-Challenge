@@ -138,7 +138,7 @@ final class GameManager {
                         self.startNextWord(in: laneIndex, after: wordBoxViewModel)
 
                     case .finished:
-                        self.speak(wordBoxViewModel.word)
+                        self.utterWord(wordBoxViewModel.word)
                         self.startNextWord(in: laneIndex, after: wordBoxViewModel)
 
                     default:
@@ -162,21 +162,23 @@ final class GameManager {
         lane[index + 1].state = .moving
     }
     
-    private func speak(_ word: String) {
+    private func utterWord(_ word: String) {
         let utterance = AVSpeechUtterance(string: word)
         utterance.rate = 0.6
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.volume = 1.0
         
-        DispatchQueue.main.async {
-            self.speechSynthesizer.speak(utterance)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.speechSynthesizer.speak(utterance)
         }
     }
     
+    /// "Warms up" the TTS engine to prevent the glitch that happens on the first TTS call
     func warmUpTTS() {
         let emptyUtterance = AVSpeechUtterance(string: " ")
+        emptyUtterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         emptyUtterance.rate = 0.6
-
+        emptyUtterance.volume = 0.0
         speechSynthesizer.speak(emptyUtterance)
     }
 

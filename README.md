@@ -4,9 +4,11 @@ This project fulfills the requirements for:
 - **Tier 1:** Basic functionality with dynamic word movement and user interaction to capture escaping words. The design and functionality follow the provided example on the webpage.
 - **Tier 3:** Enhanced gameplay with **Text-to-Speech (TTS)** support using `AVSpeechSynthesizer` to utter words that escape.
 
-## 📽️ Demo
+## Demo
 
-![WordScapeGame Demo](/media/demo.gif)
+<p float="left">
+  <img src="media/demo.gif" width="300" />
+</p>
 
 ## Main Features
 - Dynamic word movement across lanes with random speeds.
@@ -15,6 +17,10 @@ This project fulfills the requirements for:
 - Words that reach the finish line are uttered via Text-to-Speech (TTS).
 
 ## Architecture & Design
+
+<p float="center">
+  <img src="media/wordScapeArch.png" width="500" />
+</p>
 
 The project follows the **MVVM (Model-View-ViewModel)** design pattern:
 - **Model (`WordModel`)**: Handles the core data structure for each word: text, speed.
@@ -33,6 +39,6 @@ The project follows the **MVVM (Model-View-ViewModel)** design pattern:
 As per **Generative AI Policy** section in the instruction, this project acknowledges the use of **Generative AI as a thought-partner** during the development process.
 
 ### **AI Use Case:**
-- **Design Planning:** Assisted in structuring the MVVM architecture and refining the class relationships between `Controller`, `ViewModel`, and `View`.
+- **Design Planning:** Provided assistance in structuring the MVVM architecture and validating the relationships between `Controller`, `ViewModel`, and `View`. 
 
-> **IMPORTANT:** All final decisions, code implementations, and designs were made by the developer, ensuring human oversight and discretion throughout the process.
+> **IMPORTANT:** The core design decisions were made independently by the developer, with AI support serving as a supplementary resource for refining and validating ideas.

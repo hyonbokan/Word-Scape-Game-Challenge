@@ -167,10 +167,7 @@ final class GameManager {
         utterance.rate = 0.6
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.volume = 1.0
-        
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            self?.speechSynthesizer.speak(utterance)
-        }
+        speechSynthesizer.speak(utterance)
     }
     
     /// "Warms up" the TTS engine to prevent the glitch that happens on the first TTS call
